@@ -50,6 +50,6 @@ typedef struct {
   efi_simple_text_output_protocol *StdErr;
   efi_runtime_services_t *RuntimeServices;
   efi_boot_services *BootServices;
-  UINTN NumberOfTableEntries;
+  unsigned long NumberOfTableEntries;
   EFI_CONFIGURATION_TABLE *ConfigurationTable;
 } efi_system_table;
