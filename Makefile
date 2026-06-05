@@ -1,18 +1,14 @@
 CC     = clang
 LD     = lld
 CFLAGS = -fno-pic -ffreestanding -mno-red-zone \
-				 -std=c23 -Wall -Werror -pedantic -I$(SRC)
+				 -std=c23 -Wall -Werror -pedantic -I.
 
-SRC  = $(abspath src)
-SRCS = $(wildcard $(SRC)/*.c)
-
-SRC  = $(abspath src)
-SRCS = $(wildcard $(SRC)/*.c)
-OBJS = $(patsubst $(SRC)/%.c,%.o,$(SRCS))
+SRCS = $(wildcard *.c)
+OBJS = $(patsubst %.c,%.o,$(SRCS))
 
 all: $(OBJS)
 
-%.o: $(SRC)/%.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: all
