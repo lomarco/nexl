@@ -39,6 +39,18 @@ typedef struct {
 } efi_runtime_services_t;
 
 typedef struct {
+  uint32_t Data1;
+  uint16_t Data2;
+  uint16_t Data3;
+  uint8_t Data4[8];
+} efi_guid;
+
+typedef struct{
+  efi_guid VendorGuid;
+  void *VendorTable;
+} efi_configuration_table;
+
+typedef struct {
   efi_table_header Hdr;
   char16_t *FirmwareVendor;
   uint32_t FirmwareRevision;
@@ -51,5 +63,5 @@ typedef struct {
   efi_runtime_services_t *RuntimeServices;
   efi_boot_services *BootServices;
   unsigned long NumberOfTableEntries;
-  EFI_CONFIGURATION_TABLE *ConfigurationTable;
+  efi_configuration_table *ConfigurationTable;
 } efi_system_table;
