@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+#define __efiapi __attribute__((ms_abi))
+
 typedef void *efi_handle_t;
 typedef uint64_t efi_status_t;
 typedef uint64_t efi_uint_t;
