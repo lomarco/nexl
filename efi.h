@@ -10,6 +10,7 @@ typedef void *efi_event_t;
 
 typedef union efi_simple_text_input_protocol efi_simple_text_input_protocol_t; // TODO: Impl it into driver/ dir
 typedef union efi_simple_text_output_protocol efi_simple_text_output_protocol_t;
+typedef union efi_boot_services efi_boot_services_t;
 
 typedef struct {
   uint64_t signature;
@@ -48,7 +49,7 @@ typedef struct {
   efi_handle_t StandardErrorHandle;
   efi_simple_text_output_protocol *StdErr;
   efi_runtime_services_t *RuntimeServices;
-  EFI_BOOT_SERVICES *BootServices;
+  efi_boot_services *BootServices;
   UINTN NumberOfTableEntries;
   EFI_CONFIGURATION_TABLE *ConfigurationTable;
 } efi_system_table;
