@@ -8,6 +8,8 @@ typedef uint64_t efi_uint_t;
 typedef char16_t efi_char16_t;
 typedef void *efi_event_t;
 
+typedef union efi_simple_text_input_protocol efi_simple_text_input_protocol_t; // TODO: Impl it into driver/ dir
+typedef union efi_simple_text_output_protocol efi_simple_text_output_protocol_t;
 
 typedef struct {
   uint64_t signature;
@@ -16,6 +18,7 @@ typedef struct {
   uint32_t crc32;
   uint32_t reserved;
 } efi_table_header;
+
 typedef struct {
   efi_table_header Hdr;
   char16_t *FirmwareVendor;
