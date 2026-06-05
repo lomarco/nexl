@@ -20,6 +20,24 @@ typedef struct {
 } efi_table_header;
 
 typedef struct {
+	efi_table_header hdr;
+	uint32_t get_time;
+	uint32_t set_time;
+	uint32_t get_wakeup_time;
+	uint32_t set_wakeup_time;
+	uint32_t set_virtual_address_map;
+	uint32_t convert_pointer;
+	uint32_t get_variable;
+	uint32_t get_next_variable;
+	uint32_t set_variable;
+	uint32_t get_next_high_mono_count;
+	uint32_t reset_system;
+	uint32_t update_capsule;
+	uint32_t query_capsule_caps;
+	uint32_t query_variable_info;
+} efi_runtime_services_t;
+
+typedef struct {
   efi_table_header Hdr;
   char16_t *FirmwareVendor;
   uint32_t FirmwareRevision;
@@ -29,7 +47,7 @@ typedef struct {
   efi_simple_text_output_protocol *ConOut;
   efi_handle_t StandardErrorHandle;
   efi_simple_text_output_protocol *StdErr;
-  EFI_RUNTIME_SERVICES *RuntimeServices;
+  efi_runtime_services_t *RuntimeServices;
   EFI_BOOT_SERVICES *BootServices;
   UINTN NumberOfTableEntries;
   EFI_CONFIGURATION_TABLE *ConfigurationTable;
