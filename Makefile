@@ -18,7 +18,7 @@ OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 all: kernel
 
 kernel: $(OBJS)
-	$(CC) -o $@ $^ -I $(INC) $(LDFAGS)
+	$(CC) $(CLANG_TARGET) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CLANG_TARGET) $(CFLAGS) -c $< -o $@
