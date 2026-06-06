@@ -21,6 +21,6 @@ kernel: $(OBJS)
 	$(CC) -o $@ $^ -I $(INC) $(LDFAGS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CLANG_TARGET) $(CFLAGS) -c $< -o $@
 
 .PHONY: all kernel
