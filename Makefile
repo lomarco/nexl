@@ -7,9 +7,6 @@ subdirs += drivers/
 subdirs += init/
 subdirs += kernel/
 
-SRCS = $(wildcard *.c)
-OBJS = $(patsubst %.c,%.o,$(SRCS))
-
 all: $(OBJS)
 
 %.o: %.c
