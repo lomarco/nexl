@@ -8,6 +8,7 @@ subdirs += init/
 subdirs += kernel/
 
 all: $(OBJS)
+OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
