@@ -1,7 +1,7 @@
-CC     = clang
-CFLAGS = -fno-pic -ffreestanding -mno-red-zone \
+CC      = clang
+CFLAGS  = -fno-pic -ffreestanding -mno-red-zone \
 				 -std=c23 -Wall -Werror -pedantic -I.
-LD     = lld
+LD      = lld
 LDFLAGS := -Wl,-flavor,link -Wl,-subsystem:efi_application -Wl,-entry:efi_main
 
 SUBSYSTEMS += drivers/
