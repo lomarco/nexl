@@ -21,4 +21,4 @@ kernel: $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all
+.PHONY: all kernel
