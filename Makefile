@@ -7,7 +7,8 @@ subdirs += drivers/
 subdirs += init/
 subdirs += kernel/
 
-all: $(OBJS)
+include $(patsubst %,%/Makefile,$(subdirs))
+
 OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 
 %.o: %.c
