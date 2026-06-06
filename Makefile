@@ -1,23 +1,26 @@
-SUBSYSTEMS += drivers/
-SUBSYSTEMS += init/
-SUBSYSTEMS += kernel/
+include .config
 
-include $(patsubst %,%/Makefile,$(SUBSYSTEMS))
+KERNEL = bootx64.efi
 
-INC = include/
+include drivers/Makefile
+include init/Makefile
+include kernel/Makefile
+
+INC = $(CURDIR)/include/
 
 OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 
 CC           = clang
-CLANG_TARGET = --target=x86_64-pc-windows-msvc
+CLANG_TARGET = --target=x86_64-unknown-uefi
 CFLAGS       = -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
-							 -I. -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
-LD           = lld
-LDFLAGS      = -Wl,-flavor,link -Wl,-subsystem:efi_application -Wl,-entry:efi_main
+							 -I$(INC) -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
+LDFLAGS      = -fuse-ld=lld
 
-all: kernel
+all: $(KERNEL)
 
-kernel: $(OBJS)
+kernel: $(KERNEL)
+
+$(KERNEL): $(OBJS)
 	$(CC) $(CLANG_TARGET) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
