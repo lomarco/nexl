@@ -8,7 +8,7 @@ SUBSYSTEMS += kernel/
 
 include $(patsubst %,%/Makefile,$(SUBSYSTEMS))
 
-INC = include/
+INC = $(CURDIR)/include/
 
 OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 
