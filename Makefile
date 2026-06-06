@@ -14,8 +14,7 @@ CC           = clang
 CLANG_TARGET = --target=x86_64-unknown-uefi
 CFLAGS       = -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
 							 -I. -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
-LD           = ld.lld
-LDFLAGS      = -Wl,-flavor,link -Wl,-subsystem:efi_application -Wl,-entry:efi_main
+LDFLAGS      = -fuse-ld=lld
 
 all: kernel
 
