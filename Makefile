@@ -9,12 +9,14 @@ subdirs += kernel/
 
 include $(patsubst %,%/Makefile,$(subdirs))
 
+INC = include/
+
 OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 
 all: kernel
 
 kernel: $(OBJS)
-	$(CC) -o $@ $^ $(LDFAGS)
+	$(CC) -o $@ $^ -I $(INC) $(LDFAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
