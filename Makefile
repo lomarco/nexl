@@ -3,11 +3,11 @@ LD     = lld
 CFLAGS = -fno-pic -ffreestanding -mno-red-zone \
 				 -std=c23 -Wall -Werror -pedantic -I.
 
-subdirs += drivers/
-subdirs += init/
-subdirs += kernel/
+SUBSYSTEMS += drivers/
+SUBSYSTEMS += init/
+SUBSYSTEMS += kernel/
 
-include $(patsubst %,%/Makefile,$(subdirs))
+include $(patsubst %,%/Makefile,$(SUBSYSTEMS))
 
 INC = include/
 
