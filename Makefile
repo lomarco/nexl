@@ -1,5 +1,7 @@
 include .config
 
+KERNEL = bootx64.efi
+
 SUBSYSTEMS += drivers/
 SUBSYSTEMS += init/
 SUBSYSTEMS += kernel/
@@ -16,9 +18,11 @@ CFLAGS       = -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -peda
 							 -I. -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
 LDFLAGS      = -fuse-ld=lld
 
-all: kernel
+all: $(KERNEL)
 
-kernel: $(OBJS)
+kernel: $(KERNEL)
+
+$(KERNEL): $(OBJS)
 	$(CC) $(CLANG_TARGET) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
