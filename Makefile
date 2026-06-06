@@ -2,11 +2,9 @@ include .config
 
 KERNEL = bootx64.efi
 
-SUBSYSTEMS += drivers/
-SUBSYSTEMS += init/
-SUBSYSTEMS += kernel/
-
-include $(patsubst %,%/Makefile,$(SUBSYSTEMS))
+include drivers/Makefile
+include init/Makefile
+include kernel/Makefile
 
 INC = $(CURDIR)/include/
 
