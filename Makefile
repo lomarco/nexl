@@ -1,6 +1,7 @@
-CC      = clang
-CFLAGS  = -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
-					-I. -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
+CC           = clang
+CLANG_TARGET = --target=x86_64-pc-windows-msvc
+CFLAGS       = -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
+							 -I. -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
 LD      = lld
 LDFLAGS := -Wl,-flavor,link -Wl,-subsystem:efi_application -Wl,-entry:efi_main
 
