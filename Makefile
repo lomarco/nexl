@@ -1,7 +1,7 @@
 CC     = clang
-LD     = lld
 CFLAGS = -fno-pic -ffreestanding -mno-red-zone \
 				 -std=c23 -Wall -Werror -pedantic -I.
+LD     = lld
 
 SUBSYSTEMS += drivers/
 SUBSYSTEMS += init/
