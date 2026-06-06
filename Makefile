@@ -1,3 +1,5 @@
+include .config
+
 SUBSYSTEMS += drivers/
 SUBSYSTEMS += init/
 SUBSYSTEMS += kernel/
