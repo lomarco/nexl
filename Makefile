@@ -11,6 +11,11 @@ include $(patsubst %,%/Makefile,$(subdirs))
 
 OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
 
+all: kernel
+
+kernel: $(OBJS)
+	$(CC) -o $@ $^ $(LDFAGS)
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
