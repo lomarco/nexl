@@ -1,18 +1,26 @@
-CC     = clang
-LD     = lld
-CFLAGS = -fno-pic -ffreestanding -mno-red-zone \
-				 -std=c23 -Wall -Werror -pedantic -I.
+SUBSYSTEMS += drivers/
+SUBSYSTEMS += init/
+SUBSYSTEMS += kernel/
 
-obj-y += drivers/
-obj-y += init/
-obj-y += kernel/
+include $(patsubst %,%/Makefile,$(SUBSYSTEMS))
 
-SRCS = $(wildcard *.c)
-OBJS = $(patsubst %.c,%.o,$(SRCS))
+INC = include/
 
-all: $(OBJS)
+OBJS := $(foreach d,$(obj-y),$($(d)_obj-y))
+
+CC           = clang
+CLANG_TARGET = --target=x86_64-pc-windows-msvc
+CFLAGS       = -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
+							 -I. -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
+LD           = lld
+LDFLAGS      = -Wl,-flavor,link -Wl,-subsystem:efi_application -Wl,-entry:efi_main
+
+all: kernel
+
+kernel: $(OBJS)
+	$(CC) $(CLANG_TARGET) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CLANG_TARGET) $(CFLAGS) -c $< -o $@
 
-.PHONY: all
+.PHONY: all kernel
