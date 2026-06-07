@@ -1,3 +1,5 @@
+KERNEL = nexl
+
 INC := include/
 
 CC           := clang
@@ -7,8 +9,6 @@ CFLAGS       := -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -ped
 LDFLAGS      := -fuse-ld=lld
 
 include .config
-
-KERNEL = nexl
 
 ifeq ($(CONFIG_EFI_STUB), y)
 	obj-y += drivers/efistub/main.c
