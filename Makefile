@@ -10,9 +10,9 @@ include .config
 
 KERNEL = nexl
 
-include drivers/Makefile
-include init/Makefile
-include kernel/Makefile
+ifeq ($(CONFIG_EFI_STUB), y)
+	obj-y += drivers/efistub/main.c
+endif
 
 all: $(KERNEL)
 
