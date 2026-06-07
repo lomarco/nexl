@@ -23,4 +23,7 @@ $(KERNEL): $(obj-y)
 %.o: %.c
 	$(CC) $(CLANG_TARGET) $(CFLAGS) -c $< -o $@
 
-.PHONY: all kernel
+print-objs:
+	@printf '%s\n' $(obj-y)
+
+.PHONY: all kernel print-objs
