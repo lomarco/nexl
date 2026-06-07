@@ -27,6 +27,6 @@ print-objs:
 	@printf '%s\n' $(obj-y)
 
 clean:
-	rm -f $(obj-y)
+	rm -f $(obj-y) $(KERNEL)
 
 .PHONY: all kernel print-objs clean
