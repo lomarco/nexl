@@ -12,7 +12,7 @@ include drivers/Makefile
 include init/Makefile
 include kernel/Makefile
 
-INC = $(CURDIR)/include/
+INC = include/
 
 all: $(KERNEL)
 
