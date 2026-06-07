@@ -57,13 +57,13 @@ typedef struct {
   u16 *FirmwareVendor;
   u32 FirmwareRevision;
   efi_handle_t ConsoleInHandle;
-  union efi_simple_text_input_protocol *ConIn;
+  efi_simple_text_input_protocol_t *ConIn;
   efi_handle_t ConsoleOutHandle;
-  union efi_simple_text_output_protocol *ConOut;
+  efi_simple_text_output_protocol_t *ConOut;
   efi_handle_t StandardErrorHandle;
-  union efi_simple_text_output_protocol *StdErr;
+  efi_simple_text_output_protocol_t *StdErr;
   efi_runtime_services_t *RuntimeServices;
-  union efi_boot_services *BootServices;
+  efi_boot_services_t *BootServices;
   unsigned long NumberOfTableEntries;
   efi_configuration_table *ConfigurationTable;
 } efi_system_table;
