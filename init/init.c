@@ -1,6 +1,6 @@
 #include <efi.h>
 
-efi_status_t __efiapi efi_main(efi_handle_t handle, efi_system_table *system_table) {
+efi_status_t __efiapi EfiMain(efi_handle_t handle, efi_system_table *system_table) {
   u16 msg[] = u"Hello";
   efi_status_t status;
   status = system_table->out->clear_screen(system_table->out);
