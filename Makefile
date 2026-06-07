@@ -8,7 +8,7 @@ LDFLAGS      := -fuse-ld=lld
 
 include .config
 
-KERNEL = bootx64.efi
+KERNEL = nexl
 
 include drivers/Makefile
 include init/Makefile
