@@ -1,6 +1,6 @@
 KERNEL = nexl
 
-INC := include/
+INC := include
 
 CC           := clang
 CLANG_TARGET := --target=x86_64-unknown-uefi
