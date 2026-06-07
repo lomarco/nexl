@@ -1,3 +1,5 @@
+INC := include/
+
 CC           := clang
 CLANG_TARGET := --target=x86_64-unknown-uefi
 CFLAGS       := -ffreestanding -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
@@ -11,8 +13,6 @@ KERNEL = bootx64.efi
 include drivers/Makefile
 include init/Makefile
 include kernel/Makefile
-
-INC = include/
 
 all: $(KERNEL)
 
