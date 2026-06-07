@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stdint.h>
-
 #define __efiapi __attribute__((ms_abi))
 
 typedef void *efi_handle_t;
