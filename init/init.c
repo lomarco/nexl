@@ -1,4 +1,4 @@
-#include <efi.h>
+#include <nexl/efi.h>
 
 efi_status_t __efiapi EfiMain(efi_handle_t handle, efi_system_table *system_table) {
   u16 msg[] = u"Hello";
