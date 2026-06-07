@@ -18,7 +18,7 @@ all: $(KERNEL)
 
 kernel: $(KERNEL)
 
-$(KERNEL): $(OBJS)
+$(KERNEL): $(obj-y)
 	$(CC) $(CLANG_TARGET) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
