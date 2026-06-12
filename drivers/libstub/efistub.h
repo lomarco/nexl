@@ -24,11 +24,26 @@ struct efi_simple_text_input_protocol {
   efi_event_t wait_for_key;
 };
 
+typedef struct {
+  s32 maxmode;
+  s32 mode;
+  s32 attribute;
+  s32 cursorcolumn;
+  s32 cursorrow;
+  boolean cursorvisible;
+} simple_text_output_mode;
+
 struct efi_simple_text_output_protocol {
-  void *reset;
-  efi_status_t(__efiapi *output_string)(efi_simple_text_output_protocol_t *,
-                                        efi_char16_t *);
-  void *test_string;
+  efi_status_t (__efiapi *efi_text_reset)(efi_simple_text_output_protocol_t *, boolean extver);
+  efi_status_t (__efiapi *efi_text_string)(efi_simple_text_output_protocol_t *, u16 *str);
+  efi_status_t (__efiapi *efi_text_test_string)(efi_simple_text_output_protocol_t *, u16 *str);
+  efi_status_t (__efiapi *efi_text_query_mode)(efi_simple_text_output_protocol_t *, u64 modenum, u64 *col, u64 *rows);
+  efi_status_t (*__efiapi efi_text_set_mode)(efi_simple_text_output_protocol_t *, u64 modenum);
+  efi_status_t (__efiapi *efi_text_set_attribute)(efi_simple_text_output_protocol_t *, u64 attr);
+  efi_status_t (__efiapi *efi_text_clear_screen)(efi_simple_text_output_protocol_t *);
+  efi_status_t (__efiapi *efi_text_set_cursor_pos)(efi_simple_text_output_protocol_t *, u64 col, u64 row);
+  efi_status_t (__efiapi *efi_text_enable_cur)(efi_simple_text_output_protocol_t *, boolean);
+  simple_text_output_mode *mode;
 };
 
 struct efi_boot_services {
