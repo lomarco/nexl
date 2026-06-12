@@ -45,10 +45,10 @@ typedef struct {
   u16 Data2;
   u16 Data3;
   u8 Data4[8];
-} efi_guid;
+} efi_guid_t;
 
 typedef struct{
-  efi_guid VendorGuid;
+  efi_guid_t VendorGuid;
   void *VendorTable;
 } efi_configuration_table;
 
