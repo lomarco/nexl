@@ -24,21 +24,21 @@ typedef struct {
 } efi_table_header;
 
 typedef struct {
-	efi_table_header hdr;
-	u32 get_time;
-	u32 set_time;
-	u32 get_wakeup_time;
-	u32 set_wakeup_time;
-	u32 set_virtual_address_map;
-	u32 convert_pointer;
-	u32 get_variable;
-	u32 get_next_variable;
-	u32 set_variable;
-	u32 get_next_high_mono_count;
-	u32 reset_system;
-	u32 update_capsule;
-	u32 query_capsule_caps;
-	u32 query_variable_info;
+  efi_table_header hdr;
+  u32 get_time;
+  u32 set_time;
+  u32 get_wakeup_time;
+  u32 set_wakeup_time;
+  u32 set_virtual_address_map;
+  u32 convert_pointer;
+  u32 get_variable;
+  u32 get_next_variable;
+  u32 set_variable;
+  u32 get_next_high_mono_count;
+  u32 reset_system;
+  u32 update_capsule;
+  u32 query_capsule_caps;
+  u32 query_variable_info;
 } efi_runtime_services_t;
 
 typedef struct {
@@ -48,7 +48,7 @@ typedef struct {
   u8 Data4[8];
 } efi_guid_t;
 
-typedef struct{
+typedef struct {
   efi_guid_t VendorGuid;
   void *VendorTable;
 } efi_configuration_table;
