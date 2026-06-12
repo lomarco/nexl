@@ -11,9 +11,9 @@ typedef u16 efi_char16_t;
 typedef void *efi_event_t;
 typedef u64 efi_physical_addr_t;
 
-typedef union efi_simple_text_input_protocol efi_simple_text_input_protocol_t; // TODO: Impl it into driver/ dir
-typedef union efi_simple_text_output_protocol efi_simple_text_output_protocol_t; // TODO: Impl it into driver/ dir
-typedef union efi_boot_services efi_boot_services_t; // TODO: Impl it into driver/ dir
+typedef struct efi_simple_text_input_protocol efi_simple_text_input_protocol_t; // TODO: Impl it into driver/ dir
+typedef struct efi_simple_text_output_protocol efi_simple_text_output_protocol_t; // TODO: Impl it into driver/ dir
+typedef struct efi_boot_services efi_boot_services_t; // TODO: Impl it into driver/ dir
 
 typedef struct {
   u64 signature;
