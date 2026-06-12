@@ -9,6 +9,7 @@ typedef u64 efi_status_t;
 typedef u64 efi_uint_t;
 typedef u16 efi_char16_t;
 typedef void *efi_event_t;
+typedef u64 efi_physical_addr_t;
 
 typedef union efi_simple_text_input_protocol efi_simple_text_input_protocol_t; // TODO: Impl it into driver/ dir
 typedef union efi_simple_text_output_protocol efi_simple_text_output_protocol_t; // TODO: Impl it into driver/ dir
