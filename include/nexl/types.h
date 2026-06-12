@@ -11,3 +11,5 @@ typedef unsigned int u32;
 
 typedef signed long   s64;
 typedef unsigned long u64;
+
+typedef bool boolean;
