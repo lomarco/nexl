@@ -18,8 +18,8 @@ typedef struct {
 } efi_input_key_t;
 
 struct efi_simple_text_input_protocol {
-  void *reset;
-  efi_status_t(__efiapi *read_keystroke)(efi_simple_text_input_protocol_t *,
+  efi_status_t (__efiapi *efi_input_reset)(efi_simple_text_input_protocol_t *, boolean extver);
+  efi_status_t (__efiapi *read_keystroke)(efi_simple_text_input_protocol_t *,
                                          efi_input_key_t *);
   efi_event_t wait_for_key;
 };
