@@ -10,8 +10,9 @@ LDFLAGS      := -fuse-ld=lld
 
 include .config
 
-obj-$(CONFIG_EFI_STUB) += init/init.o
-obj-$(CONFIG_EFI_STUB) += drivers/efistub/efistub.o
+obj-y += init/init.o
+
+obj-$(CONFIG_EFI_STUB) += drivers/libstub/stub.o
 
 all: $(KERNEL)
 
