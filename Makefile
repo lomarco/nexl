@@ -1,14 +1,32 @@
-CC     = clang
-LD     = lld
-CFLAGS = -fno-pic -ffreestanding -mno-red-zone \
-				 -std=c23 -Wall -Werror -pedantic -I.
+KERNEL = byth
 
-SRCS = $(wildcard *.c)
-OBJS = $(patsubst %.c,%.o,$(SRCS))
+INC := include
 
-all: $(OBJS)
+CC           := clang
+CLANG_TARGET := --target=x86_64-unknown-uefi
+CFLAGS       := -ffreestanding -nostdinc -mno-red-zone -std=c23 -Wall -Wextra -Werror -pedantic \
+                -I$(INC) -fno-pie -fshort-wchar -fno-builtin -fno-stack-protector -O2
+LDFLAGS      := -fuse-ld=lld
+
+include .config
+
+obj-$(CONFIG_EFI_STUB) += init/init.o
+obj-$(CONFIG_EFI_STUB) += drivers/efistub/main.o
+
+all: $(KERNEL)
+
+kernel: $(KERNEL)
+
+$(KERNEL): $(obj-y)
+	$(CC) $(CLANG_TARGET) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CLANG_TARGET) $(CFLAGS) -c $< -o $@
 
-.PHONY: all
+print-objs:
+	@printf '%s\n' $(obj-y)
+
+clean:
+	rm -f $(obj-y)
+
+.PHONY: all kernel print-objs clean
