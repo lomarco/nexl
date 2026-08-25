@@ -1,6 +1,6 @@
 #pragma once
 
-#include <nexl/types.h>
+#include <byth/types.h>
 
 #define EFI_SUCCESS 0
 #define EFI_LOAD_ERROR 1
