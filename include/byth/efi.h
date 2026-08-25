@@ -1,6 +1,6 @@
 #pragma once
 
-#include <nexl/types.h>
+#include <byth/types.h>
 
 #define __efiapi __attribute__((ms_abi))
 
